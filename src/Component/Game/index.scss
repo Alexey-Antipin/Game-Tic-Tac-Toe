@@ -1,0 +1,26 @@
+.game__block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 180px;
+    text-align: center;
+    width: 650px;
+    .game__element {
+      border: 5px solid rgb(65, 63, 63);
+      height: 200px;
+      width: 200px;
+    }
+    .game__element__true {
+      border: 5px solid rgb(65, 63, 63);
+      background-color: lightgreen;
+      height: 200px;
+      width: 200px;
+    }
+    .game__element__false {
+      border: 5px solid rgb(65, 63, 63);
+      background-color: rgb(255, 159, 140);
+      height: 200px;
+      width: 200px;
+    }
+  }
