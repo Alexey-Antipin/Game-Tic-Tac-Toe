@@ -1,11 +1,19 @@
 import { useEffect } from "react";
+import { appElement } from "../../ts";
 import "./index.scss";
 
-export const Component = ({
-  count,
-  setCount,
-  appElement,
+type Props = {
+  setAppElement: (value: any) => void;
+  appElement: appElement;
+  setCount: (value: number) => void;
+  count: number;
+};
+
+export const Component: React.FC<Props> = ({
   setAppElement,
+  appElement,
+  setCount,
+  count,
 }) => {
   useEffect(() => {
     randomNumbers();
@@ -26,15 +34,15 @@ export const Component = ({
     setAppElement({ massive });
   };
 
-  const clickButton = (event) => {
+  const clickButton = (event: { id: number }) => {
     // Наш ход.
     if (
       appElement.massive[event.id].status === null &&
       appElement.massive[event.id].status !== "enemy"
     ) {
-      setAppElement((state) => {
+      setAppElement((state: appElement) => {
         return {
-          massive: state.massive.map((el) =>
+          massive: state.massive.map((el: { id: number }) =>
             el.id === event.id
               ? {
                   ...el,
@@ -55,7 +63,7 @@ export const Component = ({
     setCount(count - 1);
   };
 
-  const clickEnemy = (event) => {
+  const clickEnemy = (event: { id: number }) => {
     while (true) {
       let numEnemy = Math.floor(Math.random() * 8);
 
@@ -63,9 +71,9 @@ export const Component = ({
         appElement.massive[numEnemy].status === null &&
         appElement.massive[numEnemy] !== appElement.massive[event.id]
       ) {
-        setAppElement((state) => {
+        setAppElement((state: appElement) => {
           return {
-            massive: state.massive.map((el) =>
+            massive: state.massive.map((el: { id: number }) =>
               el.id === numEnemy
                 ? {
                     ...el,
@@ -85,7 +93,7 @@ export const Component = ({
 
   return (
     <div className="game__block">
-      {appElement.massive.map((event, index) => {
+      {appElement.massive.map((event, index: number) => {
         return (
           <div
             className={event.class}

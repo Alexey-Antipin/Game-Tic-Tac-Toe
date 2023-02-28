@@ -1,7 +1,20 @@
 import { useEffect, useState } from "react";
+import { appElement } from "../../ts";
 import "./index.scss";
 
-export const GameOver = ({ win, setWin, appElement, setCount }) => {
+type Props = {
+  setCount: (value: number) => void;
+  appElement: appElement;
+  setWin: (value: string) => void;
+  win: string;
+};
+
+export const GameOver: React.FC<Props> = ({
+  appElement,
+  setCount,
+  setWin,
+  win,
+}) => {
   const [styleWin, setStyleWin] = useState("");
 
   useEffect(() => {
